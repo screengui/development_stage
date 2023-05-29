@@ -1,38 +1,38 @@
 -- DEV_Test-Build001b
 
--- Create a ScreenGui to hold the button and the second UI
+
 
 local gui = Instance.new("ScreenGui")
 
 gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Create a Frame to hold the button
+
 
 local frame = Instance.new("Frame")
 
-frame.Size = UDim2.new(0, 150, 0, 50) -- Button size
+frame.Size = UDim2.new(0, 150, 0, 50) 
 
-frame.Position = UDim2.new(0, 20, 0.5, -25) -- Positioned on the left side of the screen
+frame.Position = UDim2.new(0, 20, 0.5, -25) 
 
-frame.AnchorPoint = Vector2.new(0, 0.5) -- Anchor to the left side of the button
+frame.AnchorPoint = Vector2.new(0, 0.5) 
 
-frame.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5) -- Gray background color
+frame.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5) 
 
-frame.BackgroundTransparency = 0.5 -- Semi-transparent background
+frame.BackgroundTransparency = 0.5 
 
-frame.BorderSizePixel = 0 -- No border
+frame.BorderSizePixel = 0 
 
 frame.Parent = gui
 
--- Apply rounded corners to the button frame
+
 
 local corner = Instance.new("UICorner")
 
-corner.CornerRadius = UDim.new(0, 10) -- Set the corner radius
+corner.CornerRadius = UDim.new(0, 10) 
 
 corner.Parent = frame
 
--- Create a TextButton inside the frame
+
 
 local button = Instance.new("TextButton")
 
@@ -40,69 +40,70 @@ button.Name = "MyButton"
 
 button.Size = UDim2.new(1, 0, 1, 0)
 
-button.BackgroundTransparency = 1 -- Make the button transparent
+button.BackgroundTransparency = 1
 
 button.Text = "Open"
 
-button.TextColor3 = Color3.new(1, 1, 1) -- White text color
+button.TextColor3 = Color3.new(1, 1, 1) 
 
-button.TextScaled = true -- Adjust text size automatically
+button.TextScaled = true 
 
-button.Font = Enum.Font.SourceSansBold -- Set the font
+button.Font = Enum.Font.SourceSansBold 
 
-button.TextWrapped = true -- Wrap text if it exceeds the button size
+button.TextWrapped = true 
+
 
 button.Parent = frame
 
--- Create a Frame for the second UI
+
 
 local secondUI = Instance.new("Frame")
 
 secondUI.Name = "SecondUI"
 
-secondUI.Size = UDim2.new(0, 400, 0, 300) -- Increased size of the second UI
+secondUI.Size = UDim2.new(0, 400, 0, 300)
 
-secondUI.Position = UDim2.new(0.5, -200, 0.5, -150) -- Center the second UI
+secondUI.Position = UDim2.new(0.5, -200, 0.5, -150) 
 
-secondUI.BackgroundColor3 = Color3.fromRGB(30, 30, 30) -- Lighter black background color
+secondUI.BackgroundColor3 = Color3.fromRGB(30, 30, 30) 
 
-secondUI.Active = true -- Allow interaction with the second UI
+secondUI.Active = true 
 
 secondUI.Parent = gui
 
--- Create a title bar for the second UI
+
 
 local title = Instance.new("TextLabel")
 
 title.Name = "Title"
 
-title.Size = UDim2.new(1, 0, 0, 30) -- Size of the title bar
+title.Size = UDim2.new(1, 0, 0, 30) 
 
-title.BackgroundTransparency = 1 -- Transparent title background
+title.BackgroundTransparency = 1 
 
 title.Text = "Second UI"
 
-title.TextColor3 = Color3.new(1, 1, 1) -- White text color
+title.TextColor3 = Color3.new(1, 1, 1) 
 
-title.Font = Enum.Font.SourceSansBold -- Set the font
+title.Font = Enum.Font.SourceSansBold 
 
-title.TextScaled = true -- Adjust text size automatically
+title.TextScaled = true 
 
 title.Parent = secondUI
 
--- Apply rounded corners to the second UI
+
 
 local corner2 = Instance.new("UICorner")
 
-corner2.CornerRadius = UDim.new(0, 10) -- Set the corner radius
+corner2.CornerRadius = UDim.new(0, 10)
 
 corner2.Parent = secondUI
 
--- Hide the second UI initially
+
 
 secondUI.Visible = false
 
--- Function to execute when the button is clicked
+
 
 local function onClick()
 
@@ -110,7 +111,7 @@ local function onClick()
 
     if secondUI.Visible then
 
-        -- Close the second UI with a tweening animation
+        
 
         secondUI:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(0.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.3, true, function()
 
@@ -120,7 +121,7 @@ local function onClick()
 
     else
 
-        -- Open the second UI with a tweening animation
+        
 
         secondUI.Visible = true
 
@@ -134,11 +135,11 @@ local function onClick()
 
 end
 
--- Connect the function to the button's MouseButton1Click event
+
 
 button.MouseButton1Click:Connect(onClick)
 
--- Custom dragging behavior for the second UI element
+
 
 local dragging = false
 
@@ -190,13 +191,13 @@ local function updateDrag(input)
 
 end
 
--- Bind the dragging events
+
 
 secondUI.InputBegan:Connect(startDrag)
 
 secondUI.InputChanged:Connect(updateDrag)
 
--- Detect the current game
+
 
 local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
@@ -212,7 +213,7 @@ local supportedGameIDs = {
 
 }
 
--- Check if the current game ID is in the supported game IDs list
+
 
 local isSupportedGame = false
 
@@ -228,7 +229,7 @@ for _, supportedGameID in ipairs(supportedGameIDs) do
 
 end
 
--- Update the title based on game support
+
 
 if isSupportedGame then
 
